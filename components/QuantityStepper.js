@@ -1,18 +1,19 @@
 import React from 'react'
-import {View, Button, TextInput} from 'react-native';
+import {View, Button, TextInput, TouchableHighlight, Text} from 'react-native';
+import { styles } from '../styles/components/quantityStepper.styles';
 
 export const QuantityStepper = () => {
   return (
-    <View>
-        <Button 
-                title="-"
-            />
-            <TextInput 
-                value="1"
-            />
-            <Button
-                title="+"
-            />
+    <View style={styles.stepperContainer}>
+        <TouchableHighlight style={styles.stepper}>
+            <Text>-</Text>
+        </TouchableHighlight>
+        <TextInput
+            value="1"
+        />
+         <TouchableHighlight style={styles.stepper}>
+            <Text>+</Text>
+        </TouchableHighlight>
     </View>
   )
 }

@@ -15,5 +15,6 @@ export default function App() {
         <Stack.Screen name="plp" component={PLP} />
       </Stack.Navigator>
     </NavigationContainer>
+    // comment
   );
 }

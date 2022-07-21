@@ -1,10 +1,9 @@
-import { textAlign } from '@mui/system';
 import { StyleSheet, Text, View } from 'react-native';
 
-export const styles = StyleSheet.create({
+export const quantityStepper = StyleSheet.create({
     stepperContainer: {
         flexDirection: 'row',
-        width: 'fit-content',
+        // width: 'fit-content',
         backgroundColor: "#eaeaea",
     },
     stepper: {

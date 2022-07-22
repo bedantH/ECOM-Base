@@ -6,7 +6,6 @@ export const commonStyle = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-
     }
 })
 

@@ -39,5 +39,35 @@ export const productDetailsLayout = StyleSheet.create({
     pdpLayoutScroll: {
         width: '100%',
         height: '100%',
+    },
+    priceSec: {
+        backgroundColor: '#fff',
+        width: '100%',
+        height: 70,
+        position: 'absolute',
+        bottom: 0,
+        borderRadius: 15,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 20,
+    },
+    prcTxt: {
+        fontSize: 15,
+        fontWeight: 'bold'
+    },
+    prcVal: {
+        color: 'green'
+    },
+    buyBtn: {
+        backgroundColor: 'green',
+        padding: 10,
+        borderRadius: 10,
+        paddingHorizontal: 30
+    },
+    buyBtnTxt: {
+        color: '#fff',
+        fontWeight: 'bold',
+        fontSize: 18
     }
 });

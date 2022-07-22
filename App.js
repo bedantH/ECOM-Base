@@ -58,9 +58,15 @@ export default function App() {
           }
         </Stack.Screen>
         <Stack.Screen name='Checkout' component={Checkout} />
-        <Stack.Screen name='productDetailsPage' component={ProductDetailsPage} />
+        <Stack.Screen
+          options={() => ({
+            headerShown: true,
+            headerTitle: "Product Details"
+          })}
+          name='productDetailsPage'
+          component={ProductDetailsPage} />
       </Stack.Navigator>
-    </NavigationContainer >
+    </NavigationContainer>
 
   );
 }

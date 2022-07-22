@@ -8,6 +8,7 @@ export const productListItem = StyleSheet.create({
         padding: 10,
         borderRadius: 10,
         alignItems: "flex-start",
+        margin: 10
     },
     productImage: {
         width: 100,

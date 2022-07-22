@@ -9,6 +9,7 @@ import {
     TextInput,
     TouchableOpacity,
     FlatList,
+    Pressable,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
@@ -51,16 +52,24 @@ const dummyData = [
 ]
 
 
-const ListItem = ({ id, title, description, price, image, rating }) => {
+const ListItem = ({ id, title, description, price, image, rating, navigation }) => {
+
+    const handlePressEvent = () => {
+        navigation.navigate("productDetailsPage")
+    }
+
     return (
-        <TouchableOpacity style={{
-            backgroundColor: "white",
-            marginVertical: 10,
-            padding: 10,
-            borderRadius: 10,
-            ...productList.horizontalAlign,
-            alignItems: "flex-start",
-        }} >
+        <Pressable
+            style={{
+                backgroundColor: "white",
+                marginVertical: 10,
+                padding: 10,
+                borderRadius: 10,
+                alignItems: "flex-start",
+                ...productList.horizontalAlign,
+            }}
+            onPress={handlePressEvent}
+        >
             <Image
                 source={{ uri: image }}
                 style={{
@@ -89,12 +98,12 @@ const ListItem = ({ id, title, description, price, image, rating }) => {
                     {price}
                 </Text>
             </View>
-        </TouchableOpacity>
+        </Pressable>
     )
 }
 
 
-export const PLP = ({ navigation }) => {
+export const ProductListPage = ({ navigation }) => {
 
     return (
         <SafeAreaView style={productList.container}>
@@ -152,7 +161,7 @@ export const PLP = ({ navigation }) => {
                     <FlatList
                         data={dummyData}
                         renderItem={({ item }) => {
-                            return <ListItem {...item} />
+                            return <ListItem navigation={navigation} {...item} />
                         }}
                         contentContainerStyle={{
                             flexGrow: 1

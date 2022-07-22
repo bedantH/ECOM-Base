@@ -1,11 +1,15 @@
 import React from "react";
-import { SafeAreaView, Button } from "react-native";
-import { QuantityStepper } from "../components";
+import {
+    SafeAreaView,
+    Text,
+    Platform
+} from "react-native";
+import Constants from "expo-constants";
 
 function Cart() {
     return (
-        <SafeAreaView>
-            <QuantityStepper />
+        <SafeAreaView style={{ marginTop: Constants.statusBarHeight }}>
+            <Text>This is cart section!</Text>
         </SafeAreaView>
     )
 }

@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
+import Constants from "expo-constants";
 
 export const productList = StyleSheet.create({
     container: {
         padding: 10,
+        marginTop: Constants.statusBarHeight
     },
     searchArea: {
         height: 200,

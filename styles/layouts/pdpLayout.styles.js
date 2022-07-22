@@ -9,12 +9,10 @@ export const productDetailsLayout = StyleSheet.create({
         width: 200,
         height: 230
     },
-    backIcon: {
-        position: 'absolute',
-        top: 30,
-        left: 15,
-        marginTop: 10,
-        marginBottom: 10,
+    contentSec:{
+        marginLeft: 10,
+        marginTop: 15,
+        marginBottom: 80,
     },
     bannerContainer: {
         display: 'flex',
@@ -42,9 +40,9 @@ export const productDetailsLayout = StyleSheet.create({
     },
     priceSec: {
         backgroundColor: '#fff',
+        position: 'absolute',
         width: '100%',
         height: 70,
-        position: 'absolute',
         bottom: 0,
         borderRadius: 15,
         flexDirection: 'row',

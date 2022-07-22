@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Ionicons from "react-native-vector-icons/Ionicons";
+import Ionicons from "react-native-vector-icons/Feather";
 const Tab = createBottomTabNavigator();
 
 const Stack = createNativeStackNavigator();
@@ -31,17 +31,23 @@ export default function App() {
                     let routeName = route.name;
 
                     if (routeName === "Home") {
-                      iconName = focused ? 'home' : 'home-outline'
+                      iconName = focused ? 'home' : 'home'
                     } else if (routeName === "Cart") {
-                      iconName = focused ? 'cart' : 'cart-outline'
+                      iconName = focused ? 'shopping-cart' : 'shopping-cart'
                     } else if (routeName === "User") {
-                      iconName = focused ? 'person' : 'person-outline'
+                      iconName = focused ? 'users' : 'users'
                     }
 
                     return <Ionicons name={iconName} size={size} color={color} />
                   },
                   headerShown: false,
                   tabBarShowLabel: false,
+                  tabBarStyle: {
+                    margin: 10,
+                    borderRadius: 10,
+                    height: 60,
+                    marginTop: 0
+                  }
                 })}
 
               >
@@ -54,7 +60,7 @@ export default function App() {
         <Stack.Screen name='Checkout' component={Checkout} />
         <Stack.Screen name='productDetailsPage' component={ProductDetailsPage} />
       </Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer >
 
   );
 }

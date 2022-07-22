@@ -3,10 +3,8 @@ import Constants from "expo-constants";
 
 export const commonStyle = StyleSheet.create({
     horizontalAlignCenter: {
-        display: "flex",
         flexDirection: "row",
         alignItems: "center",
-
     }
 })
 
@@ -47,7 +45,7 @@ export const productList = StyleSheet.create({
         opacity: 0.8,
     },
     boldTitleFont: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: "bold",
     },
 })

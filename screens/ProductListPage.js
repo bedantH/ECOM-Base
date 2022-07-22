@@ -59,6 +59,7 @@ export const ProductListPage = ({ navigation }) => {
 
             <ScrollView>
 
+
                 <ImageBackground
                     source={{ uri: "https://d2j6dbq0eux0bg.cloudfront.net/startersite/images/32560207/1611080817510.jpg" }}
                     style={productList.searchArea}
@@ -99,15 +100,18 @@ export const ProductListPage = ({ navigation }) => {
                             size={24}
                         />
                     </View>
-                    <FlatList
-                        data={dummyData}
-                        renderItem={({ item }) => {
-                            return <ProductListItem navigation={navigation} {...item} />
-                        }}
-                        contentContainerStyle={{
-                            flexGrow: 1
-                        }}
-                    />
+                    <View>
+                        <FlatList
+                            data={dummyData}
+                            renderItem={({ item }) => {
+                                return <ProductListItem navigation={navigation} {...item} />
+                            }}
+                            contentContainerStyle={{
+                                flexGrow: 1
+                            }}
+                            scrollEnabled
+                        />
+                    </View>
                 </View>
             </ScrollView>
 

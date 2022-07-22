@@ -1,4 +1,4 @@
-import { Pressable, Image, Text, View } from "react-native"
+import { Pressable, Image, Text, View, Touchable, TouchableOpacity, TouchableWithoutFeedback } from "react-native"
 import { commonStyle, productListItem } from "../../../styles";
 export const ProductListItem = ({ id, title, description, price, image, rating, navigation }) => {
 
@@ -32,6 +32,7 @@ export const ProductListItem = ({ id, title, description, price, image, rating, 
                     {price}
                 </Text>
             </View>
+
         </Pressable>
     )
 }

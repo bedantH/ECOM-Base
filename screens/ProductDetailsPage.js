@@ -1,11 +1,15 @@
 import React from "react";
-import { SafeAreaView, ScrollView, Image, TouchableHighlight, Text, Pressable } from "react-native";
+import { SafeAreaView, ScrollView, Image, TouchableHighlight, Text, Pressable, View, TouchableOpacity } from "react-native";
 import { QuantityStepper, Ratings } from "../components";
 import { AntDesign } from '@expo/vector-icons';
 import { productDetailsLayout as styles } from "../styles";
 import Constants from "expo-constants";
 
-export function ProductDetailsPage() {
+export function ProductDetailsPage({ navigation }) {
+
+
+    const buyProd = () => navigation.navigate('Checkout');
+
     return (
         <SafeAreaView style={{ marginTop: Constants.statusBarHeight }}>
             <Pressable>
@@ -28,6 +32,18 @@ export function ProductDetailsPage() {
                 </Text>
                 <QuantityStepper />
             </ScrollView>
+
+            <View style={styles.priceSec}>
+                <Text style={styles.prcTxt}>
+                    Price
+                    {'\n'}
+                    <Text style={styles.prcVal}>1200/-</Text>
+                </Text>
+
+                <TouchableOpacity style={styles.buyBtn} onPress={buyProd}>
+                    <Text style={styles.buyBtnTxt}>Buy</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     )
 }

@@ -1,6 +1,15 @@
 import { StyleSheet } from "react-native";
 import Constants from "expo-constants";
 
+export const commonStyle = StyleSheet.create({
+    horizontalAlignCenter: {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+
+    }
+})
+
 export const productList = StyleSheet.create({
     container: {
         padding: 10,
@@ -33,9 +42,12 @@ export const productList = StyleSheet.create({
     input: {
         flex: 1
     },
-    horizontalAlign: {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-    }
+    bannerImage: {
+        borderRadius: 10,
+        opacity: 0.8,
+    },
+    boldTitleFont: {
+        fontSize: 18,
+        fontWeight: "bold",
+    },
 })

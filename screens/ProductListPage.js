@@ -12,8 +12,8 @@ import {
     Pressable,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
-import { productList } from "../styles/screens/productList";
+import { ProductListItem } from "../components";
+import { commonStyle, productList } from "../styles";
 
 
 const dummyData = [
@@ -52,57 +52,6 @@ const dummyData = [
 ]
 
 
-const ListItem = ({ id, title, description, price, image, rating, navigation }) => {
-
-    const handlePressEvent = () => {
-        navigation.navigate("productDetailsPage")
-    }
-
-    return (
-        <Pressable
-            style={{
-                backgroundColor: "white",
-                marginVertical: 10,
-                padding: 10,
-                borderRadius: 10,
-                alignItems: "flex-start",
-                ...productList.horizontalAlign,
-            }}
-            onPress={handlePressEvent}
-        >
-            <Image
-                source={{ uri: image }}
-                style={{
-                    width: 100,
-                    height: 150,
-                    borderRadius: 10
-                }}
-            />
-            <View style={{
-                marginLeft: 10,
-                display: "flex",
-                flexDirection: "column",
-                fontSize: 18,
-                justifyContent: "space-between",
-            }}>
-                <Text style={{ fontSize: 14 }}>
-                    {rating}
-                </Text>
-                <Text style={{ fontSize: 18, marginTop: 10 }}>
-                    {title}
-                </Text>
-                <Text style={{ fontSize: 16, marginTop: 10 }}>
-                    {description}
-                </Text>
-                <Text style={{ fontSize: 16, marginTop: 10 }}>
-                    {price}
-                </Text>
-            </View>
-        </Pressable>
-    )
-}
-
-
 export const ProductListPage = ({ navigation }) => {
 
     return (
@@ -113,10 +62,7 @@ export const ProductListPage = ({ navigation }) => {
                 <ImageBackground
                     source={{ uri: "https://d2j6dbq0eux0bg.cloudfront.net/startersite/images/32560207/1611080817510.jpg" }}
                     style={productList.searchArea}
-                    imageStyle={{
-                        borderRadius: 10,
-                        opacity: 0.8
-                    }}
+                    imageStyle={productList.bannerImage}
                 >
                     <Text>Earthen Fresh</Text>
                     <View
@@ -140,17 +86,12 @@ export const ProductListPage = ({ navigation }) => {
                 <View style={{ marginTop: 20 }}>
                     <View
                         style={{
-                            ...productList.horizontalAlign,
+                            ...commonStyle.horizontalAlignCenter,
                             width: "100%",
                             justifyContent: "space-between",
                         }}
                     >
-                        <Text
-                            style={{
-                                fontSize: 18,
-                                fontWeight: "bold",
-                            }}
-                        >
+                        <Text style={productList.boldTitleFont}>
                             Products
                         </Text>
                         <Ionicons
@@ -161,7 +102,7 @@ export const ProductListPage = ({ navigation }) => {
                     <FlatList
                         data={dummyData}
                         renderItem={({ item }) => {
-                            return <ListItem navigation={navigation} {...item} />
+                            return <ProductListItem navigation={navigation} {...item} />
                         }}
                         contentContainerStyle={{
                             flexGrow: 1

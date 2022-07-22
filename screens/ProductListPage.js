@@ -10,6 +10,7 @@ import {
     TouchableOpacity,
     FlatList,
     Pressable,
+    VirtualizedList,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { ProductListItem } from "../components";
@@ -57,63 +58,60 @@ export const ProductListPage = ({ navigation }) => {
     return (
         <SafeAreaView style={productList.container}>
 
-            <ScrollView>
 
-
-                <ImageBackground
-                    source={{ uri: "https://d2j6dbq0eux0bg.cloudfront.net/startersite/images/32560207/1611080817510.jpg" }}
-                    style={productList.searchArea}
-                    imageStyle={productList.bannerImage}
-                >
-                    <Text>Earthen Fresh</Text>
-                    <View
-                        style={productList.inputView}>
-                        <TextInput
-                            style={productList.input}
-                            placeholder="Search for daal, spices, sweets, etc. "
-                            clearButtonMode="always"
-                            inlineImageLeft="search_icon"
-                        />
-                        <TouchableOpacity>
-                            <Ionicons
-                                name="ios-search"
-                                size={20}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                </ImageBackground>
-
-
-                <View style={{ marginTop: 20 }}>
-                    <View
-                        style={{
-                            ...commonStyle.horizontalAlignCenter,
-                            width: "100%",
-                            justifyContent: "space-between",
-                        }}
-                    >
-                        <Text style={productList.boldTitleFont}>
-                            Products
-                        </Text>
+            <ImageBackground
+                source={{ uri: "https://d2j6dbq0eux0bg.cloudfront.net/startersite/images/32560207/1611080817510.jpg" }}
+                style={productList.searchArea}
+                imageStyle={productList.bannerImage}
+            >
+                <Text>Earthen Fresh</Text>
+                <View
+                    style={productList.inputView}>
+                    <TextInput
+                        style={productList.input}
+                        placeholder="Search for daal, spices, sweets, etc. "
+                        clearButtonMode="always"
+                        inlineImageLeft="search_icon"
+                    />
+                    <TouchableOpacity>
                         <Ionicons
-                            name="ios-apps"
-                            size={24}
+                            name="ios-search"
+                            size={20}
                         />
-                    </View>
-                    <View>
-                        <FlatList
-                            data={dummyData}
-                            renderItem={({ item }) => {
-                                return <ProductListItem navigation={navigation} {...item} />
-                            }}
-                            contentContainerStyle={{
-                                flexGrow: 1
-                            }}
-                            scrollEnabled
-                        />
-                    </View>
+                    </TouchableOpacity>
                 </View>
-            </ScrollView>
+            </ImageBackground>
+
+
+            <View style={{ marginTop: 20 }}>
+                <View
+                    style={{
+                        ...commonStyle.horizontalAlignCenter,
+                        width: "100%",
+                        justifyContent: "space-between",
+                    }}
+                >
+                    <Text style={productList.boldTitleFont}>
+                        Products
+                    </Text>
+                    <Ionicons
+                        name="ios-apps"
+                        size={24}
+                    />
+                </View>
+                <View style={{
+                    height: "75%"
+                }}>
+                    <FlatList
+                        data={dummyData}
+                        renderItem={({ item }) => {
+                            return <ProductListItem navigation={navigation} {...item} />
+                        }}
+                        keyExtractor={(item) => item.id}
+
+                    />
+                </View>
+            </View>
 
         </SafeAreaView>
     )

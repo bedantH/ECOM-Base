@@ -23,8 +23,7 @@ export const productList = StyleSheet.create({
         flexDirection: "column",
     },
     inputView: {
-        height: 42,
-        fontSize: 16,
+        height: 55,
         borderWidth: 1,
         padding: 10,
         color: "black",
@@ -38,6 +37,7 @@ export const productList = StyleSheet.create({
         justifyContent: "space-between",
     },
     input: {
+        fontSize: 16,
         flex: 1
     },
     bannerImage: {

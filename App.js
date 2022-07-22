@@ -15,7 +15,11 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator 
+        screenOptions={() => ({
+          headerShown: false
+        })}
+      >
         <Stack.Screen name='App'>
           {
             () =>
@@ -37,7 +41,7 @@ export default function App() {
                     return <Ionicons name={iconName} size={size} color={color} />
                   },
                   headerShown: false,
-                  tabBarShowLabel: false
+                  tabBarShowLabel: false,
                 })}
 
               >

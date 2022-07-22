@@ -1,11 +1,12 @@
 import React from "react";
 import {SafeAreaView, Button} from "react-native";
-import {QuantityStepper} from "../components";
+import { Ratings } from "../components";
 
 function PDP () {
     return (
         <SafeAreaView>
-            <QuantityStepper/>
+            <Ratings />
+            <Button title="Add to Cart" />
         </SafeAreaView>
     )
 } 

@@ -9,7 +9,6 @@ export const PLP = ({ navigation }) => {
 
     return (
         <SafeAreaView>
-
             <Button
                 title="Hello World"
                 onPress={showProductDetailsPage}

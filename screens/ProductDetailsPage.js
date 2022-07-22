@@ -11,11 +11,8 @@ export function ProductDetailsPage({ navigation }) {
     const buyProd = () => navigation.navigate('Checkout');
 
     return (
-        <SafeAreaView style={{ marginTop: Constants.statusBarHeight }}>
-            <Pressable>
-                <AntDesign style={styles.backIcon} name="left" size={16} color="black" />
-            </Pressable>
-            <ScrollView style={styles.pdpLayoutScroll}>
+        <SafeAreaView style={[{ marginTop: Constants.statusBarHeight }]}>
+            <ScrollView style={[styles.pdpLayoutScroll, styles.pdpLayout]}>
                 <TouchableHighlight style={styles.bannerContainer}>
                     <Image style={styles.bannerProduct}
                         source={{
@@ -23,14 +20,16 @@ export function ProductDetailsPage({ navigation }) {
                         }}
                     />
                 </TouchableHighlight>
-                <Ratings rating="4.5" />
-                <Text style={styles.productTitle}>
-                    Mens Cotton Jacket
-                </Text>
-                <Text style={styles.productDesc}>
-                    Great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors...
-                </Text>
-                <QuantityStepper />
+                <View style={styles.contentSec}>
+                    <Ratings rating="4.5" />
+                    <Text style={styles.productTitle}>
+                        Mens Cotton Jacket
+                    </Text>
+                    <Text style={styles.productDesc}>
+                        Great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors...
+                    </Text>
+                    <QuantityStepper />
+                </View>
             </ScrollView>
 
             <View style={styles.priceSec}>

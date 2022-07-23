@@ -8,6 +8,8 @@ export const productListItem = StyleSheet.create({
         marginBottom: 20,
         borderRadius: 10,
         alignItems: "flex-start",
+        borderWidth: 1,
+        borderColor: "#e4e4e4",
     },
     productImage: {
         width: 140,

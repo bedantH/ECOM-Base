@@ -1,23 +1,22 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { View, Button, TextInput, TouchableOpacity, Text } from 'react-native';
 import { quantityStepper } from '../styles';
 
-export const QuantityStepper = () => {
+export const QuantityStepper = ({ counter, setCounter }) => {
 
-    const [ counter, setCounter ] = useState(1);
 
     const add = () => {
-        if (counter < 10){
-            setCounter(counter+1);
+        if (counter < 10) {
+            setCounter(counter + 1);
         }
     }
 
     const sub = () => {
-        if (counter > 1){
-            setCounter(counter-1);
+        if (counter > 1) {
+            setCounter(counter - 1);
         }
     }
-    
+
     return (
         <View style={quantityStepper.stepperContainer}>
             <TouchableOpacity style={quantityStepper.stepper} onPress={sub}>

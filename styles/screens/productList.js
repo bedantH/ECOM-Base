@@ -14,7 +14,7 @@ export const productList = StyleSheet.create({
         marginTop: Constants.statusBarHeight,
         width: "100%",
         height: "100%",
-        overflow: "scroll"
+        backgroundColor: "white"
     },
     searchArea: {
         height: 200,
@@ -27,7 +27,6 @@ export const productList = StyleSheet.create({
     },
     inputView: {
         height: 55,
-        borderWidth: 1,
         padding: 10,
         color: "black",
         borderRadius: 10,
@@ -51,4 +50,14 @@ export const productList = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
     },
+    bannerText: {
+        fontFamily: "DancingScript",
+        color: "white",
+        fontSize: 38
+    },
+    bannerSubText: {
+        fontFamily: "PoppinsRegular",
+        color: "white",
+        fontSize: 14
+    }
 })

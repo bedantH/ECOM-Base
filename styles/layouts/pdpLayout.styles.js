@@ -57,21 +57,21 @@ export const productDetailsLayout = StyleSheet.create({
         borderTopStartRadius: 10,
     },
     prcTxt: {
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: 'bold',
         fontFamily: "Poppins-Bold",
     },
     buyBtn: {
-        backgroundColor: 'green',
+        backgroundColor: '#76BA99',
         padding: 10,
         elevation: 1,
         paddingHorizontal: 30,
-        borderRadius: 10
+        borderRadius: 10,
     },
     buyBtnTxt: {
         color: '#fff',
         fontWeight: 'bold',
         fontSize: 18,
-        fontFamily: "PoppinsRegular",
+        fontFamily: "Poppins-Bold",
     }
 });

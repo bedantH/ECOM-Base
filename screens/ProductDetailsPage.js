@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, Image, TouchableHighlight, Text, Pressable, View, TouchableOpacity } from "react-native";
+import { SafeAreaView, ScrollView, Image, TouchableHighlight, Text, Pressable, View, TouchableOpacity, Alert } from "react-native";
 import { QuantityStepper, Ratings } from "../components";
 import { AntDesign } from '@expo/vector-icons';
 import { productDetailsLayout as styles } from "../styles";
 import Constants from "expo-constants";
-import { getSingleProduct } from "../services";
+import { getSingleProduct, sendWhatsAppMessage } from "../services";
+import { useAuth } from "../context/AuthContext";
 
 export function ProductDetailsPage({ route, navigation }) {
+    const { user } = useAuth();
 
     const { productId } = route.params;
     const [product, setProduct] = useState({})
     const [loading, setLoading] = useState(true)
+    const [counter, setCounter] = useState(1)
 
     useEffect(() => {
         getSingleProduct({ id: productId })
             .then(res => {
-                console.log(res.data)
                 setProduct(res.data)
                 setLoading(false)
+                navigation.setOptions({
+                    headerTitle: "Back"
+                })
             })
             .catch(err => {
                 console.log(err)
@@ -27,7 +32,25 @@ export function ProductDetailsPage({ route, navigation }) {
 
 
 
-    const buyProd = () => navigation.navigate('Checkout');
+    const buyProd = () => {
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+        const fourDaysAfter = new Date(Date.now() + 4 * 24 * 60 * 60 * 1000)
+
+        const data = {
+            productName: product.title.trim() + " for $" + (product.price * counter),
+            deliveryDate: fourDaysAfter.toDateString(),
+            to: user.mobileNumber
+        }
+        sendWhatsAppMessage(data)
+            .then(res => {
+                console.log(res.data)
+                navigation.navigate("Checkout", { ...product, quantity: counter, price: (product.price * counter) })
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+    }
 
     if (loading) {
         return <Text>Loading...</Text>
@@ -55,7 +78,7 @@ export function ProductDetailsPage({ route, navigation }) {
                     <Text style={styles.productDesc}>
                         {product.description}
                     </Text>
-                    <QuantityStepper />
+                    <QuantityStepper counter={counter} setCounter={setCounter} />
                 </View>
             </ScrollView>
 
@@ -65,7 +88,7 @@ export function ProductDetailsPage({ route, navigation }) {
                 </Text>
 
                 <TouchableOpacity style={styles.buyBtn} onPress={buyProd}>
-                    <Text style={styles.buyBtnTxt}>Buy</Text>
+                    <Text style={styles.buyBtnTxt}>BUY</Text>
                 </TouchableOpacity>
             </View>
         </SafeAreaView>

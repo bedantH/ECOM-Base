@@ -23,7 +23,7 @@ export const quantityStepper = StyleSheet.create({
         textAlign: 'center',
         textAlignVertical: 'center',
         fontSize: 16,
-        backgroundColor: "#37B6FF",
+        backgroundColor: "#76BA99",
         color: '#fff',
         padding: 5,
         fontWeight: 'bold',
@@ -31,7 +31,7 @@ export const quantityStepper = StyleSheet.create({
     add: {
         borderTopRightRadius: 5,
         borderBottomRightRadius: 5,
-    }, 
+    },
     sub: {
         borderTopLeftRadius: 5,
         borderBottomLeftRadius: 5,

@@ -87,7 +87,8 @@ export const ProductListPage = ({ navigation }) => {
                 style={productList.searchArea}
                 imageStyle={productList.bannerImage}
             >
-                <Text>Earthen Fresh</Text>
+                <Text style={productList.bannerText}>Earthen Fresh</Text>
+                <Text style={productList.bannerSubText}>Your health is 80% nutrition, choose your food wisely!</Text>
                 <View
                     style={productList.inputView}>
                     <TextInput

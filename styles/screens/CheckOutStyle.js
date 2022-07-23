@@ -35,20 +35,24 @@ export const CheckOutStyle = StyleSheet.create({
 
     prodImg: {
         width: "100%",
-        height: 175,
+        height: 140,
     },
 
     doneBtn: {
-        backgroundColor: "#57F53B",
+        backgroundColor: "#76BA99",
         width: "85%",
         borderRadius: 50,
         padding: 10,
+        alignItems: "center",
+        flexDirection: "row",
+        justifyContent: "center"
     },
 
     txt: {
         textAlign: "center",
         fontSize: 20,
         fontWeight: "bold",
-        color: "#fff"
+        color: "#fff",
+        marginRight: 10
     }
 })

@@ -2,14 +2,15 @@ import { StyleSheet } from 'react-native';
 
 export const productDetailsLayout = StyleSheet.create({
     pdpLayout: {
-        padding: 30,
-        paddingTop: 60,
+        padding: 10,
+        paddingTop: 0,
+        backgroundColor: "white"
     },
     bannerProduct: {
         width: 200,
         height: 230
     },
-    contentSec:{
+    contentSec: {
         marginLeft: 10,
         marginTop: 15,
         marginBottom: 80,
@@ -28,11 +29,14 @@ export const productDetailsLayout = StyleSheet.create({
         marginTop: 10,
         marginBottom: 15,
         marginLeft: 10,
+        fontFamily: "PoppinsRegular",
+
     },
     productDesc: {
         fontSize: 13,
         marginBottom: 10,
         marginLeft: 10,
+        fontFamily: "PoppinsRegular",
     },
     pdpLayoutScroll: {
         width: '100%',
@@ -49,23 +53,25 @@ export const productDetailsLayout = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         paddingHorizontal: 20,
+        borderTopStartRadius: 10,
+        borderTopStartRadius: 10,
     },
     prcTxt: {
-        fontSize: 15,
-        fontWeight: 'bold'
-    },
-    prcVal: {
-        color: 'green'
+        fontSize: 18,
+        fontWeight: 'bold',
+        fontFamily: "Poppins-Bold",
     },
     buyBtn: {
         backgroundColor: 'green',
         padding: 10,
-        borderRadius: 10,
-        paddingHorizontal: 30
+        elevation: 1,
+        paddingHorizontal: 30,
+        borderRadius: 10
     },
     buyBtnTxt: {
         color: '#fff',
         fontWeight: 'bold',
-        fontSize: 18
+        fontSize: 18,
+        fontFamily: "PoppinsRegular",
     }
 });

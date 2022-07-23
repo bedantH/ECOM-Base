@@ -1,9 +1,13 @@
 import { Pressable, Image, Text, View, Touchable, TouchableOpacity, TouchableWithoutFeedback } from "react-native"
 import { commonStyle, productListItem } from "../../../styles";
+import Ionicons from "react-native-vector-icons/Ionicons";
+
 export const ProductListItem = ({ id, title, description, price, image, rating, navigation }) => {
 
     const handlePressEvent = () => {
-        navigation.navigate("productDetailsPage")
+        navigation.navigate("productDetailsPage", {
+            productId: id
+        })
     }
 
     return (
@@ -18,19 +22,21 @@ export const ProductListItem = ({ id, title, description, price, image, rating, 
             <Image
                 source={{ uri: image }}
                 style={productListItem.productImage}
+                resizeMode="center"
+
             />
             <View style={productListItem.productDetails}>
-                <Text style={productListItem.productDetails.rating}>
-                    {rating}
+                <Text style={productListItem.productDetails.rating} >
+                    {rating.rate}
                 </Text>
                 <Text style={productListItem.productDetails.title}>
-                    {title}
+                    {title.split(" ").slice(0, 10).join(" ")}
                 </Text>
                 <Text style={productListItem.productDetails.description}>
-                    {description}
+                    {description.split(" ").slice(0, 10).join(" ")}...
                 </Text>
                 <Text style={productListItem.productDetails.price}>
-                    {price}
+                    ${price}
                 </Text>
             </View>
 

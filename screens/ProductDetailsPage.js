@@ -1,32 +1,59 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView, ScrollView, Image, TouchableHighlight, Text, Pressable, View, TouchableOpacity } from "react-native";
 import { QuantityStepper, Ratings } from "../components";
 import { AntDesign } from '@expo/vector-icons';
 import { productDetailsLayout as styles } from "../styles";
 import Constants from "expo-constants";
+import { getSingleProduct } from "../services";
 
-export function ProductDetailsPage({ navigation }) {
+export function ProductDetailsPage({ route, navigation }) {
+
+    const { productId } = route.params;
+    const [product, setProduct] = useState({})
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+        getSingleProduct({ id: productId })
+            .then(res => {
+                console.log(res.data)
+                setProduct(res.data)
+                setLoading(false)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
+
 
 
     const buyProd = () => navigation.navigate('Checkout');
 
+    if (loading) {
+        return <Text>Loading...</Text>
+    }
+
     return (
-        <SafeAreaView style={[{ marginTop: Constants.statusBarHeight }]}>
+        <SafeAreaView
+        // style={[{ marginTop: Constants.statusBarHeight }]}
+        >
             <ScrollView style={[styles.pdpLayoutScroll, styles.pdpLayout]}>
-                <TouchableHighlight style={styles.bannerContainer}>
-                    <Image style={styles.bannerProduct}
+                <View style={styles.bannerContainer}>
+                    <Image
+                        style={styles.bannerProduct}
                         source={{
-                            uri: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg"
+                            uri: product.image
                         }}
+                        resizeMode="center"
                     />
-                </TouchableHighlight>
+                </View>
                 <View style={styles.contentSec}>
-                    <Ratings rating="4.5" />
+                    <Ratings rating={product.rating.rate} />
                     <Text style={styles.productTitle}>
-                        Mens Cotton Jacket
+                        {product.title}
                     </Text>
                     <Text style={styles.productDesc}>
-                        Great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors...
+                        {product.description}
                     </Text>
                     <QuantityStepper />
                 </View>
@@ -34,9 +61,7 @@ export function ProductDetailsPage({ navigation }) {
 
             <View style={styles.priceSec}>
                 <Text style={styles.prcTxt}>
-                    Price
-                    {'\n'}
-                    <Text style={styles.prcVal}>1200/-</Text>
+                    ${product.price}
                 </Text>
 
                 <TouchableOpacity style={styles.buyBtn} onPress={buyProd}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
     SafeAreaView,
     ScrollView,
@@ -11,8 +11,10 @@ import {
     FlatList,
     Pressable,
     VirtualizedList,
+    KeyboardAvoidingView,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { listAllProducts } from "../services";
 import { ProductListItem } from "../components";
 import { commonStyle, productList } from "../styles";
 
@@ -55,8 +57,29 @@ const dummyData = [
 
 export const ProductListPage = ({ navigation }) => {
 
+    const [productListData, setProductListData] = useState([])
+    const [listLoading, setListLoading] = useState(true)
+
+    useEffect(() => {
+        listAllProducts()
+            .then(res => {
+                // console.log(res.data)
+                setProductListData(res.data)
+                setListLoading(false)
+            }).catch(err => {
+                console.log(err.message)
+            })
+
+    }, [])
+
+    if (listLoading) {
+        return <Text>Loading...</Text>
+    }
+
+
     return (
         <SafeAreaView style={productList.container}>
+
 
 
             <ImageBackground
@@ -83,35 +106,36 @@ export const ProductListPage = ({ navigation }) => {
             </ImageBackground>
 
 
-            <View style={{ marginTop: 20 }}>
-                <View
-                    style={{
-                        ...commonStyle.horizontalAlignCenter,
-                        width: "100%",
-                        justifyContent: "space-between",
-                    }}
-                >
-                    <Text style={productList.boldTitleFont}>
-                        Products
-                    </Text>
-                    <Ionicons
-                        name="ios-apps"
-                        size={24}
-                    />
-                </View>
-                <View style={{
-                    height: "75%"
-                }}>
-                    <FlatList
-                        data={dummyData}
-                        renderItem={({ item }) => {
-                            return <ProductListItem navigation={navigation} {...item} />
-                        }}
-                        keyExtractor={(item) => item.id}
-
-                    />
-                </View>
+            <View
+                style={{
+                    ...commonStyle.horizontalAlignCenter,
+                    width: "100%",
+                    justifyContent: "space-between",
+                    marginTop: 20,
+                }}
+            >
+                <Text style={productList.boldTitleFont}>
+                    Products
+                </Text>
+                <Ionicons
+                    name="ios-apps"
+                    size={24}
+                />
             </View>
+
+
+            <FlatList
+                data={productListData}
+                renderItem={({ item }) => {
+                    return <ProductListItem {...item} navigation={navigation} />
+                }}
+                contentContainerStyle={{
+                    marginTop: 10,
+                    paddingBottom: 20
+                }}
+                keyExtractor={(item) => item.id}
+                showsVerticalScrollIndicator={false}
+            />
 
         </SafeAreaView>
     )

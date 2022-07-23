@@ -11,7 +11,10 @@ export const commonStyle = StyleSheet.create({
 export const productList = StyleSheet.create({
     container: {
         padding: 10,
-        marginTop: Constants.statusBarHeight
+        marginTop: Constants.statusBarHeight,
+        width: "100%",
+        height: "100%",
+        overflow: "scroll"
     },
     searchArea: {
         height: 200,

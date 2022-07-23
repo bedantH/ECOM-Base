@@ -4,37 +4,48 @@ import Constants from "expo-constants";
 export const productListItem = StyleSheet.create({
     container: {
         backgroundColor: "white",
-        marginVertical: 10,
         padding: 10,
+        marginBottom: 20,
         borderRadius: 10,
         alignItems: "flex-start",
-        margin: 10
     },
     productImage: {
-        width: 100,
-        height: 150,
-        borderRadius: 10
+        width: 140,
+        height: 200,
     },
     productDetails: {
-        marginLeft: 10,
+        marginLeft: 20,
         display: "flex",
         flexDirection: "column",
         fontSize: 18,
         justifyContent: "space-between",
+        width: "50%",
         rating: {
-            fontSize: 14
+            fontSize: 14,
+            flex: 1,
+            fontFamily: "PoppinsRegular",
+            opacity: 0.5,
         },
         title: {
-            fontSize: 18,
+            flexGrow: 1,
+            fontSize: 14,
             marginTop: 10,
             fontWeight: "bold",
+            flexWrap: "wrap",
+            fontFamily: "Poppins-Bold"
         },
         description: {
-            fontSize: 16,
+            fontFamily: "PoppinsRegular",
+            flexGrow: 1,
+            flexWrap: "wrap",
+            fontSize: 12,
             marginTop: 10,
+            opacity: 0.8,
         },
         price: {
-            fontSize: 18,
+            fontFamily: "PoppinsRegular",
+            flexGrow: 1,
+            fontSize: 22,
             marginTop: 10,
             fontWeight: "bold",
         },

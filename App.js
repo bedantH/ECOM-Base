@@ -4,15 +4,37 @@ import { ProductDetailsPage, ProductListPage, Cart, Checkout, User, } from "./sc
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import * as Font from 'expo-font';
 import Ionicons from "react-native-vector-icons/Feather";
+import { useEffect, useState } from 'react';
 const Tab = createBottomTabNavigator();
 
 const Stack = createNativeStackNavigator();
 
 
 
+
 export default function App() {
+
+  const [fontsLoaded, setFontsLoaded] = useState(false)
+
+  async function loadFonts() {
+    await Font.loadAsync({
+      'PoppinsRegular': require('./assets/fonts/Poppins-Regular.ttf'),
+      'PoppinsMedium': require('./assets/fonts/Poppins-Medium.ttf'),
+      'Poppins-Bold': require('./assets/fonts/Poppins-Bold.ttf'),
+    });
+    setFontsLoaded(true);
+  }
+
+  useEffect(() => {
+    loadFonts();
+  }, [])
+
+  if (!fontsLoaded) {
+    return null
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -46,8 +68,9 @@ export default function App() {
                     margin: 10,
                     borderRadius: 10,
                     height: 60,
-                    marginTop: 0
+                    marginTop: 0,
                   }
+
                 })}
 
               >

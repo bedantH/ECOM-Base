@@ -2,6 +2,7 @@ import React from "react";
 import { View, Button, Text, ImageBackground, Image, TouchableOpacity } from "react-native";
 import { CheckOutStyle } from "../styles";
 import Ionicons from "react-native-vector-icons/Feather";
+import { ScrollView } from "react-native-web";
 
 export const Checkout = ({ route, navigation }) => {
 
@@ -11,46 +12,48 @@ export const Checkout = ({ route, navigation }) => {
 
     return (
         <View style={CheckOutStyle.container}>
-            <View>
-                <Text style={CheckOutStyle.emjTxt}>
-                    <Text style={CheckOutStyle.emj}>
-                        👍
+            <ScrollView>
+                <View>
+                    <Text style={CheckOutStyle.emjTxt}>
+                        <Text style={CheckOutStyle.emj}>
+                            👍
+                        </Text>
+                        {'\n'}
+                        Congratulations, Your order has been placed!
                     </Text>
-                    {'\n'}
-                    Congratulations, Your order has been placed!
-                </Text>
-            </View>
+                </View>
 
-            <View style={[CheckOutStyle.prodCard, CheckOutStyle.elevation]}>
+                <View style={[CheckOutStyle.prodCard, CheckOutStyle.elevation]}>
 
-                <ImageBackground
-                    source={{ uri: image }}
-                    style={CheckOutStyle.prodImg}
-                    resizeMode="center"
-                />
-                <Text style={{ fontFamily: "Poppins-Bold", fontSize: 18 }}>
-                    {'\n'}{title} x {quantity}
-                </Text>
+                    <ImageBackground
+                        source={{ uri: image }}
+                        style={CheckOutStyle.prodImg}
+                        resizeMode="center"
+                    />
+                    <Text style={{ fontFamily: "Poppins-Bold", fontSize: 18 }}>
+                        {'\n'}{title} x {quantity}
+                    </Text>
 
-                <Text
-                    style={{ fontFamily: "PoppinsRegular", fontSize: 12 }}
-                >
-                    {'\n'}{description.split(" ").slice(0, 20).join(" ")}...
+                    <Text
+                        style={{ fontFamily: "PoppinsRegular", fontSize: 12 }}
+                    >
+                        {'\n'}{description.split(" ").slice(0, 20).join(" ")}...
 
-                </Text>
-                <Text style={{ fontFamily: "Poppins-Bold", fontSize: 18 }}>
-                    {'\n'}
-                    Paid: ${price}
-                </Text>
+                    </Text>
+                    <Text style={{ fontFamily: "Poppins-Bold", fontSize: 18 }}>
+                        {'\n'}
+                        Paid: ${price}
+                    </Text>
 
-            </View>
+                </View>
 
-            <TouchableOpacity style={CheckOutStyle.doneBtn} onPress={prodScreen}>
-                <Text style={CheckOutStyle.txt}>
-                    Done
-                </Text>
-                <Ionicons name="check" size={22} color="#fff" />
-            </TouchableOpacity>
+                <TouchableOpacity style={CheckOutStyle.doneBtn} onPress={prodScreen}>
+                    <Text style={CheckOutStyle.txt}>
+                        Done
+                    </Text>
+                    <Ionicons name="check" size={22} color="#fff" />
+                </TouchableOpacity>
+            </ScrollView>
         </View>
     )
 } 

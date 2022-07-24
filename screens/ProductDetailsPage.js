@@ -4,7 +4,7 @@ import { QuantityStepper, Ratings } from "../components";
 import { AntDesign } from '@expo/vector-icons';
 import { productDetailsLayout as styles } from "../styles";
 import Constants from "expo-constants";
-import { getSingleProduct, sendWhatsAppMessage } from "../services";
+import { getSingleProduct, sendWhatsAppMessage, sendSMS } from "../services";
 import { useAuth } from "../context/AuthContext";
 
 export function ProductDetailsPage({ route, navigation }) {
@@ -30,8 +30,6 @@ export function ProductDetailsPage({ route, navigation }) {
     }, [])
 
 
-
-
     const buyProd = () => {
         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
@@ -42,13 +40,22 @@ export function ProductDetailsPage({ route, navigation }) {
             deliveryDate: fourDaysAfter.toDateString(),
             to: user.mobileNumber
         }
+
+        console.log(data);
+
         sendWhatsAppMessage(data)
             .then(res => {
-                console.log(res.data)
-                navigation.navigate("Checkout", { ...product, quantity: counter, price: (product.price * counter) })
+                sendSMS(data)
+                    .then(res => {
+                        console.log(res.data);
+                        navigation.navigate("Checkout", { ...product, quantity: counter, price: (product.price * counter) })
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
             })
             .catch(err => {
-                console.log(err.message)
+                console.error(err.message)
             })
     }
 
